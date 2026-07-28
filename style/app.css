@@ -1,0 +1,147 @@
+@import "reset.css";
+
+:root{
+ 
+}
+
+html{
+
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body{
+font-size: 1.6rem;
+display: flex;
+    background-color: #2f0000;
+    color: #200b0b;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+*,*::after,*::before{
+
+  box-sizing: inherit;
+}
+
+
+
+
+form{
+    background: linear-gradient(to bottom, #2f0000, #650000, #2f0000);
+width: 50%;
+margin: auto;
+padding: 10rem 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+margin-top: 13rem;
+}
+.container{width: 60%;}
+.loginImg{
+
+position: relative;
+transition: all 60ms ease-in;
+
+}
+.eye{
+display: block;
+width: 14rem;
+height: 14rem;
+}
+/* -41 14 */
+.loginImg::before{
+  content:" ";
+  width: 3.9rem;
+  height: 3.9rem;
+  background-color: black;
+  border-radius: 100%;
+  position: absolute;
+  top: -46px;
+  left: 0;
+  right: 0;
+  opacity: var(--opacity);
+  bottom: 0;
+  margin: auto;
+transition: all 60ms ease-in;
+      transform: translate(var(--x, 0px), var(--y, 0px));
+
+
+
+}
+.loginImg.active::before{
+   top: -36px;
+  right: 0;
+  left: var(--left);
+  /* bottom: -14px; */
+transition: all 60ms ease-in;
+
+}
+
+.username{
+
+
+}
+.pass__wraper{
+
+display: flex;
+flex-direction: row;
+align-items: center;
+position: relative;
+}
+.password{
+
+}
+.input,.btn{
+display:inline-block ;
+width: 100%;
+background-color: transparent;
+padding: 3rem 2rem 1rem .5rem;
+border: none;
+outline: none;
+}
+.input{border-bottom:solid 3px black ;
+    color: #200b0b;
+}
+.pass{
+
+
+}
+.hide_pass{
+
+display: inline;
+width: 2rem;
+height: 2rem;
+position: absolute;
+right: -4rem;
+bottom: 0;
+cursor: pointer;
+
+top: 3rem;
+}
+.btn{
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+letter-spacing: .6rem;
+margin-top: 1rem;
+cursor: pointer;
+}
+.eye{
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes blinkAnim{
+  0%   { transform: scaleY(1); }
+  50%  { transform: scaleY(0.08); }
+  100% { transform: scaleY(1); }
+}
+
+.eye.blink{
+  animation: blinkAnim 300ms ease-in-out;
+}
