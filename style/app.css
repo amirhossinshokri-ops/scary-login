@@ -50,10 +50,11 @@ transition: all 60ms ease-in;
 
 }
 .eye{
-display: block;
+display: none;
 width: 14rem;
 height: 14rem;
 }
+.eye.show{display: block;}
 /* -41 14 */
 .loginImg::before{
   content:" ";
@@ -145,3 +146,14 @@ cursor: pointer;
 .eye.blink{
   animation: blinkAnim 300ms ease-in-out;
 }
+
+@media (max-width: 470px) {
+  form,.container{
+    width: 100%;
+
+    
+  }
+.hide_pass{
+  display: none;
+
+}}

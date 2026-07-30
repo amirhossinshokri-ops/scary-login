@@ -1,28 +1,30 @@
 const eye=document.querySelector(".loginImg")
 const username=document.querySelector(".username")
 const pass=document.querySelector(".pass")
-const eyeSvg = document.querySelector(".eye");
+const eyeSvg = document.querySelectorAll(".eye");
+
 let isclosingEye =false;
 let isFocused =false;
 let hide =false;
 
 
 
-const closeframes=[
-"./frames/eyeframe0.svg",
-"./frames/eyeframe1.svg",
-"./frames/eyeframe2.svg",
-"./frames/eyeframe3.svg",
-"./frames/eyeframe4.svg"
-]
+// const closeframes=[
+// "./frames/eyeframe0.svg",
+// "./frames/eyeframe1.svg",
+// "./frames/eyeframe2.svg",
+// "./frames/eyeframe3.svg",
+// "./frames/eyeframe4.svg"
+// ]
 
-let openframes= closeframes.slice(0,-1).reverse()
+// let openframes= closeframes.slice(0,-1).reverse()
 
 
-frames=[...closeframes,...openframes]
+// frames=[...closeframes,...openframes]
+let sequence=[0,1,2,3,4,3,2,1,0]
+let closeframes=sequence.slice(0,5)
 
 let value,width;
-console.log(eye);
 
 function foucs(e){
   isFocused=true
@@ -60,15 +62,12 @@ setTimeout(blink,1000)
 }
 
 
-// function blink(){
-//   eyeSvg.classList.add("blink");
-// }
+function showEyeFrame(index){
+  eyeSvg.forEach(img => {
+    img.classList.toggle("show", Number(img.dataset.frame) === index);
+  });
+}
 
-// eyeSvg.addEventListener("animationend", () => {
-//   eyeSvg.classList.remove("blink");
-// });
-
-// setInterval(blink, 5000);
 
 
 
@@ -79,13 +78,14 @@ function blink(){
   let i=0
   let x=setInterval(()=>{
     
-    frames[i]==="./frames/eyeframe0.svg"?eye.style.setProperty("--opacity",1):eye.style.setProperty("--opacity",0)
-  eyeSvg.src=frames[i];
+ const frameIndex = sequence[i];
+    eye.style.setProperty("--opacity", frameIndex === 0 ? 1 : 0);
+    showEyeFrame(frameIndex);
 
   i++
 
 
-if(i>frames.length-1){
+if(i>sequence.length-1){
   clearInterval(x)
 }
   },100)
@@ -147,8 +147,9 @@ function movePupil(clientX, clientY) {
  let i=0
   let x=setInterval(()=>{
     
-    closeframes[i]==="./frames/eyeframe0.svg"?eye.style.setProperty("--opacity",1):eye.style.setProperty("--opacity",0)
-  eyeSvg.src=closeframes[i];
+ const frameIndex = closeframes[i];
+    eye.style.setProperty("--opacity", frameIndex === 0 ? 1 : 0);
+    showEyeFrame(frameIndex);
 
   i++
 
