@@ -159,7 +159,7 @@ function movePupil(clientX, clientY) {
 if(i>closeframes.length-1){
   clearInterval(x)
 }
-  },100)
+  },70)
 
 
     
